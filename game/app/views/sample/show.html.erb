@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+  </head>
+
+  <body onload="draw();">
+    <canvas id="sample" width="400" height="300"></canvas>
+        <script type="text/javascript">
+            function draw(){
+                var canvas = document.getElementById('sample');
+                //描画コンテキスト取得
+                if (canvas.getContext){
+                    var ctx = canvas.getContext('2d');
+                    //四角形(塗りつぶし)
+                    ctx.fillRect(50,50,300,260);
+                    //四角形(抜き)
+                    ctx.clearRect(120,80,200,180);
+                    //四角形(枠のみ)
+                    ctx.strokeRect(180,20,180,180);
+                    //ラインの設定
+                    ctx.strokeStyle="rgb(120, 0, 90)";
+                    //ライン幅
+                    ctx.lineWidth=5;
+                    //ライン接合部(丸)
+                    ctx.lineJoin="round";
+                    //一筆書き開始
+                    ctx.beginPath();
+                    ctx.moveTo(60, 10)
+                    ctx.lineTo(170, 205);
+                    ctx.lineTo(380, 50);
+                    //一筆書き終了
+                    ctx.closePath();
+                    //ライン描画
+                    ctx.stroke();
+                }
+            }
+        </script>
+    <style type="text/css">
+        #sample {
+            background: #fff;
+        }
+    </style>  </body>
+</html>
